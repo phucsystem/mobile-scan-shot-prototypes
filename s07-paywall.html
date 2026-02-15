@@ -1,0 +1,228 @@
+<!--
+  Screen: S-07 Paywall
+  CJX Stage: Discovery
+  FR Mapping: FR-25, FR-26
+  Note: Pro subscription upsell screen
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-07 Paywall</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .paywall-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-surface);
+      overflow-y: auto;
+    }
+    .paywall-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: rgba(0,0,0,0.05);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      color: var(--color-text-secondary);
+    }
+    .paywall-close:hover {
+      background: rgba(0,0,0,0.1);
+    }
+    .paywall-close svg {
+      width: 18px;
+      height: 18px;
+    }
+    .paywall-hero {
+      padding: 48px var(--space-lg) var(--space-lg);
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-primary-bg) 0%, var(--color-surface) 100%);
+    }
+    .paywall-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-md);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(25,118,210,0.2);
+    }
+    .paywall-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .paywall-title {
+      font: var(--text-h1);
+      color: var(--color-primary-dark);
+      margin-bottom: var(--space-xs);
+    }
+    .paywall-subtitle {
+      font: var(--text-body);
+      color: var(--color-text-secondary);
+      font-size: 15px;
+    }
+    .paywall-benefits {
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .benefit-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--color-primary-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .benefit-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-primary);
+    }
+    .benefit-text {
+      flex: 1;
+    }
+    .benefit-title {
+      font: var(--text-body);
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .benefit-desc {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+    }
+    .paywall-footer {
+      padding: var(--space-md) var(--space-lg) 32px;
+      margin-top: auto;
+    }
+    .paywall-price {
+      text-align: center;
+      margin-bottom: var(--space-md);
+    }
+    .paywall-price-amount {
+      font: var(--text-h2);
+      color: var(--color-text-primary);
+    }
+    .paywall-price-period {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+    }
+    .paywall-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+    .paywall-link {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .paywall-link:hover {
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body class="cjx-discovery">
+  <div class="app-layout">
+    <main class="main-content">
+      <div class="paywall-content" data-cjx-entrance>
+
+        <!-- Close button -->
+        <button class="paywall-close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+
+        <!-- Hero -->
+        <div class="paywall-hero">
+          <div class="paywall-icon">
+            <img src="assets/icon-header.png" alt="Scan Shot">
+          </div>
+          <h1 class="paywall-title">Scan Shot Pro</h1>
+          <p class="paywall-subtitle">Unlock the full experience</p>
+        </div>
+
+        <!-- Benefits -->
+        <div class="paywall-benefits">
+          <div class="benefit-row">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <div class="benefit-title">Unlimited Scans</div>
+              <div class="benefit-desc">No daily limits, scan as much as you need</div>
+            </div>
+          </div>
+
+          <div class="benefit-row">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <div class="benefit-title">No Ads</div>
+              <div class="benefit-desc">Clean, distraction-free experience</div>
+            </div>
+          </div>
+
+          <div class="benefit-row">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <div class="benefit-title">Support Development</div>
+              <div class="benefit-desc">Help us keep Scan Shot fast and private</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer with CTA -->
+        <div class="paywall-footer">
+          <div class="paywall-price">
+            <span class="paywall-price-amount">$2.90</span>
+            <span class="paywall-price-period"> / month</span>
+          </div>
+          <button class="btn-primary">Subscribe Now</button>
+          <div class="paywall-links">
+            <a class="paywall-link">Restore Purchases</a>
+            <a class="paywall-link">Terms</a>
+            <a class="paywall-link">Privacy</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

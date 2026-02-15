@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
       { file: 's03-preview-edit.html', label: 'S03 Preview' },
       { file: 's04-scan-session.html', label: 'S04 Session' },
       { file: 's05-export.html', label: 'S05 Export' },
+      { file: 's06-scan-limit.html', label: 'S06 Limit' },
+      { file: 's07-paywall.html', label: 'S07 Paywall' },
     ];
     var currentFile = window.location.pathname.split('/').pop() || '';
     var nav = document.createElement('nav');

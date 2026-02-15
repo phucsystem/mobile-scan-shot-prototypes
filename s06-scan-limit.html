@@ -1,0 +1,209 @@
+<!--
+  Screen: S-06 Scan Limit
+  CJX Stage: Retention
+  FR Mapping: FR-22, FR-24, FR-25
+  Note: Shown when user attempts 4th scan (daily limit reached)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-06 Scan Limit</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .limit-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-overlay);
+      display: flex;
+      align-items: flex-end;
+      z-index: 50;
+    }
+    .limit-sheet {
+      width: 100%;
+      background: var(--color-surface);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      padding: var(--space-lg);
+      padding-bottom: 40px;
+      animation: sheetSlideUp 0.3s ease-out;
+    }
+    @keyframes sheetSlideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .limit-sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 2px;
+      margin: 0 auto var(--space-lg);
+    }
+    .limit-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-md);
+      background: var(--color-primary-bg);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .limit-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--color-primary);
+    }
+    .limit-title {
+      font: var(--text-h2);
+      text-align: center;
+      margin-bottom: var(--space-xs);
+    }
+    .limit-subtitle {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .limit-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .limit-counter-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-full);
+      background: var(--color-border);
+    }
+    .limit-counter-dot.used {
+      background: var(--color-primary);
+    }
+    .limit-counter-label {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+      margin-left: var(--space-sm);
+    }
+    .limit-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .btn-rewarded {
+      font: var(--text-button);
+      background: var(--color-surface);
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      padding: 14px var(--space-lg);
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      transition: all 0.2s ease;
+    }
+    .btn-rewarded:hover {
+      background: var(--color-primary-bg);
+    }
+    .btn-rewarded svg {
+      width: 20px;
+      height: 20px;
+    }
+    .limit-dismiss {
+      font: var(--text-caption);
+      color: var(--color-text-secondary);
+      text-align: center;
+      padding: var(--space-sm);
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+    }
+    .limit-dismiss:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* Dimmed camera background */
+    .camera-bg {
+      flex: 1;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .camera-bg-icon {
+      width: 60px;
+      height: 60px;
+      color: rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+<body class="cjx-retention">
+  <div class="app-layout">
+    <main class="main-content">
+
+      <!-- Dimmed camera background -->
+      <div class="camera-bg">
+        <svg class="camera-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+      </div>
+
+      <!-- Bottom sheet overlay -->
+      <div class="limit-overlay">
+        <div class="limit-sheet" data-cjx-entrance>
+          <div class="limit-sheet-handle"></div>
+
+          <!-- Icon -->
+          <div class="limit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+
+          <!-- Text -->
+          <h2 class="limit-title">Daily Limit Reached</h2>
+          <p class="limit-subtitle">You've used all 3 free scans today</p>
+
+          <!-- Counter dots -->
+          <div class="limit-counter">
+            <div class="limit-counter-dot used"></div>
+            <div class="limit-counter-dot used"></div>
+            <div class="limit-counter-dot used"></div>
+            <span class="limit-counter-label">0 remaining</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="limit-actions">
+            <!-- Watch video for +3 scans -->
+            <button class="btn-rewarded">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Watch Video for 3 Free Scans
+            </button>
+
+            <!-- Go Pro -->
+            <button class="btn-primary">Go Pro — $2.90/month</button>
+
+            <!-- Dismiss -->
+            <button class="limit-dismiss">Resets tomorrow &middot; Go back</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

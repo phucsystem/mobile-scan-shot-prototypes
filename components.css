@@ -911,3 +911,42 @@
   color: var(--color-text-secondary);
   max-width: 280px;
 }
+
+/* --- Ad Banner (Gallery bottom, 320x50 AdMob standard) --- */
+.ad-banner {
+  height: 50px;
+  background: #f0f0f0;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.ad-banner-label {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ad-banner-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.ad-banner-text {
+  font: var(--text-caption);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+.ad-banner-cta {
+  font: var(--text-caption);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+}
