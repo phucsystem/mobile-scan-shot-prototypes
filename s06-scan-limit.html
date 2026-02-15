@@ -67,26 +67,47 @@
       text-align: center;
       margin-bottom: var(--space-lg);
     }
-    .limit-counter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
+    .scan-meter {
       margin-bottom: var(--space-lg);
+      padding: 0 var(--space-sm);
     }
-    .limit-counter-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: var(--radius-full);
-      background: var(--color-border);
+    .scan-meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--space-sm);
     }
-    .limit-counter-dot.used {
-      background: var(--color-primary);
-    }
-    .limit-counter-label {
+    .scan-meter-label {
       font: var(--text-caption);
       color: var(--color-text-secondary);
-      margin-left: var(--space-sm);
+    }
+    .scan-meter-count {
+      font: var(--text-body);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-error);
+    }
+    .scan-meter-bar {
+      height: 8px;
+      background: var(--color-background);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .scan-meter-fill {
+      height: 100%;
+      width: 100%;
+      background: var(--color-error);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    .scan-meter-segments {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .scan-meter-seg {
+      font-size: 10px;
+      color: var(--color-text-secondary);
     }
     .limit-actions {
       display: flex;
@@ -175,12 +196,21 @@
           <h2 class="limit-title">Daily Limit Reached</h2>
           <p class="limit-subtitle">You've used all 3 free scans today</p>
 
-          <!-- Counter dots -->
-          <div class="limit-counter">
-            <div class="limit-counter-dot used"></div>
-            <div class="limit-counter-dot used"></div>
-            <div class="limit-counter-dot used"></div>
-            <span class="limit-counter-label">0 remaining</span>
+          <!-- Scan usage meter -->
+          <div class="scan-meter">
+            <div class="scan-meter-header">
+              <span class="scan-meter-label">Free scans used</span>
+              <span class="scan-meter-count">3 / 3</span>
+            </div>
+            <div class="scan-meter-bar">
+              <div class="scan-meter-fill"></div>
+            </div>
+            <div class="scan-meter-segments">
+              <span class="scan-meter-seg">0</span>
+              <span class="scan-meter-seg">1</span>
+              <span class="scan-meter-seg">2</span>
+              <span class="scan-meter-seg">3</span>
+            </div>
           </div>
 
           <!-- Actions -->
