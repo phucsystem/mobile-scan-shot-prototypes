@@ -1,0 +1,178 @@
+<!--
+  Screen: S-03 Preview / Edit
+  CJX Stage: Usage
+  FR Mapping: FR-03, FR-04, FR-10, FR-11, FR-12
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-03 Preview / Edit</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .preview-image-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-background);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview-doc-wrap {
+      position: relative;
+      width: 82%;
+      aspect-ratio: 3 / 4;
+    }
+
+    .preview-doc-surface {
+      width: 100%;
+      height: 100%;
+      background: var(--color-surface);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+      gap: 10px;
+    }
+
+    /* Simulated scanned document content */
+    .scan-line {
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+    }
+
+    .scan-line.title-line {
+      width: 55%;
+      height: 6px;
+      background: #bbb;
+      margin-bottom: 8px;
+    }
+
+    .scan-line.short { width: 40%; }
+    .scan-line.medium { width: 70%; }
+    .scan-line.long { width: 90%; }
+    .scan-line.full { width: 100%; }
+
+    .scan-block {
+      width: 60%;
+      height: 50px;
+      background: #e8e8e8;
+      border-radius: 3px;
+      margin: 6px 0;
+    }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--color-border);
+      flex-shrink: 0;
+      margin: 0 var(--space-xs);
+    }
+  </style>
+</head>
+<body class="cjx-usage">
+  <div class="app-layout">
+    <main class="main-content" data-cjx-entrance>
+
+      <!-- Top bar: Back/cancel (left), "Done" / checkmark (right) -->
+      <div class="top-bar">
+        <button class="icon-btn" title="Back / Cancel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+        </button>
+        <span style="font: var(--text-body); font-weight: 600;">Edit</span>
+        <button class="icon-btn" title="Done" style="color: var(--color-primary);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Preview image: Perspective-corrected scan, pinch-to-zoom enabled -->
+      <!-- Crop handles: 4 corner handles (draggable) showing crop boundary -->
+      <div class="preview-image-area">
+        <div class="preview-doc-wrap">
+
+          <!-- Simulated scanned document -->
+          <div class="preview-doc-surface">
+            <div class="scan-line title-line"></div>
+            <div class="scan-line long"></div>
+            <div class="scan-line full"></div>
+            <div class="scan-line medium"></div>
+            <div class="scan-line long"></div>
+            <div class="scan-block"></div>
+            <div class="scan-line full"></div>
+            <div class="scan-line short"></div>
+            <div class="scan-line long"></div>
+            <div class="scan-line medium"></div>
+            <div class="scan-line full"></div>
+            <div class="scan-line long"></div>
+            <div class="scan-line short"></div>
+          </div>
+
+          <!-- Crop boundary and handles -->
+          <div class="crop-border"></div>
+          <div class="crop-handle top-left"></div>
+          <div class="crop-handle top-right"></div>
+          <div class="crop-handle bottom-left"></div>
+          <div class="crop-handle bottom-right"></div>
+
+        </div>
+      </div>
+
+      <!-- Bottom toolbar (horizontal scroll):
+           Rotate left, Rotate right, Filter: Original | B&W | Enhanced, Retake -->
+      <div class="bottom-toolbar">
+        <!-- Rotate left (90 CCW) -->
+        <button class="toolbar-btn" title="Rotate Left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+          </svg>
+          <span>Rotate L</span>
+        </button>
+
+        <!-- Rotate right (90 CW) -->
+        <button class="toolbar-btn" title="Rotate Right">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/>
+          </svg>
+          <span>Rotate R</span>
+        </button>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Filter: Original | B&W | Enhanced (3 pill toggles) -->
+        <div class="filter-pills">
+          <button class="filter-pill active">Original</button>
+          <button class="filter-pill">B&W</button>
+          <button class="filter-pill">Enhanced</button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Retake (re-open camera) -->
+        <button class="toolbar-btn" title="Retake">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          <span>Retake</span>
+        </button>
+      </div>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

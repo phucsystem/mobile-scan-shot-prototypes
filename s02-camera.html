@@ -1,0 +1,145 @@
+<!--
+  Screen: S-02 Camera
+  CJX Stage: Usage
+  FR Mapping: FR-01, FR-02, FR-08
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-02 Camera</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .camera-viewfinder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #0C1222 0%, #131B2E 40%, #0A1628 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Subtle desk surface texture */
+    .camera-viewfinder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.03) 0%, transparent 60%);
+    }
+
+    /* Simulated document on dark surface */
+    .camera-doc-sim {
+      width: 68%;
+      height: 48%;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Simulated text lines on document */
+    .sim-line {
+      position: absolute;
+      left: 20px;
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="cjx-usage">
+  <div class="app-layout">
+    <main class="main-content" style="position: relative;" data-cjx-entrance>
+
+      <!-- Viewfinder: Full-screen camera feed -->
+      <div class="camera-viewfinder">
+        <!-- Simulated document shape on desk -->
+        <div class="camera-doc-sim">
+          <div class="sim-line" style="top: 25px; width: 60%;"></div>
+          <div class="sim-line" style="top: 40px; width: 75%;"></div>
+          <div class="sim-line" style="top: 55px; width: 50%;"></div>
+          <div class="sim-line" style="top: 70px; width: 70%;"></div>
+          <div class="sim-line" style="top: 85px; width: 45%;"></div>
+          <div class="sim-line" style="top: 105px; width: 65%;"></div>
+          <div class="sim-line" style="top: 120px; width: 55%;"></div>
+        </div>
+      </div>
+
+      <!-- Edge overlay: Semi-transparent blue boundary showing detected document edges -->
+      <div class="edge-overlay">
+        <svg viewBox="0 0 300 220" fill="none">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Edge detection boundary -->
+          <polygon
+            points="15,10 285,8 290,210 10,215"
+            fill="rgba(66,165,245,0.08)"
+            stroke="var(--color-edge-detect)"
+            stroke-width="2"
+            stroke-linejoin="round"
+            filter="url(#glow)"
+          />
+          <!-- Corner indicators with glow -->
+          <circle cx="15" cy="10" r="7" fill="var(--color-edge-detect)" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="285" cy="8" r="7" fill="var(--color-edge-detect)" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="290" cy="210" r="7" fill="var(--color-edge-detect)" opacity="0.9" filter="url(#glow)"/>
+          <circle cx="10" cy="215" r="7" fill="var(--color-edge-detect)" opacity="0.9" filter="url(#glow)"/>
+          <!-- Inner white dot for corners -->
+          <circle cx="15" cy="10" r="2.5" fill="white"/>
+          <circle cx="285" cy="8" r="2.5" fill="white"/>
+          <circle cx="290" cy="210" r="2.5" fill="white"/>
+          <circle cx="10" cy="215" r="2.5" fill="white"/>
+        </svg>
+      </div>
+
+      <!-- Camera overlay controls -->
+      <div class="camera-overlay">
+
+        <!-- Top bar: Flash toggle (left), Page counter (center), Close button (right) -->
+        <div class="camera-top-bar">
+          <!-- Flash toggle: auto/on/off cycle -->
+          <button class="flash-btn" title="Toggle flash">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <span class="flash-label" style="font-size: 9px; margin-top: 2px;">auto</span>
+          </button>
+
+          <!-- Page counter: Badge showing "Page N" when in multi-page session -->
+          <span class="page-counter-badge">Page 2</span>
+
+          <!-- Close button: "X" icon to cancel and return -->
+          <button class="close-btn" title="Close camera">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Guidance text: "Position document within frame" (fades after 3s) -->
+        <div class="camera-guidance">Position document within frame</div>
+
+        <!-- Capture button: Large circle (72px) at bottom center, white with blue ring -->
+        <div class="camera-bottom-bar">
+          <button class="capture-btn" title="Capture">
+            <div class="capture-btn-inner"></div>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

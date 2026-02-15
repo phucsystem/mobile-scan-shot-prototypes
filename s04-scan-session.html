@@ -1,0 +1,154 @@
+<!--
+  Screen: S-04 Scan Session
+  CJX Stage: Retention
+  FR Mapping: FR-07, FR-08, FR-13, FR-14, FR-17
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-04 Scan Session</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .session-preview-placeholder .doc-sim {
+      width: 75%;
+      height: 80%;
+      background: var(--color-surface);
+      border-radius: var(--radius-sm);
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .doc-sim-line {
+      height: 3px;
+      background: #ddd;
+      border-radius: 2px;
+    }
+
+    .doc-sim-line.heading { width: 50%; height: 5px; background: #bbb; margin-bottom: 4px; }
+    .doc-sim-line.short { width: 35%; }
+    .doc-sim-line.medium { width: 65%; }
+    .doc-sim-line.long { width: 85%; }
+    .doc-sim-line.full { width: 100%; }
+
+    .doc-sim-block {
+      width: 55%;
+      height: 35px;
+      background: #e8e8e8;
+      border-radius: 2px;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body class="cjx-retention">
+  <div class="app-layout">
+    <main class="main-content" data-cjx-entrance>
+
+      <!-- Top bar: Back arrow (left), Document title (center, tappable to rename), "Export" button (right) -->
+      <div class="top-bar">
+        <button class="icon-btn" title="Back (save and return)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+        </button>
+        <input class="editable-title" value="Tax Return 2025" title="Tap to rename">
+        <button class="btn-export">Export</button>
+      </div>
+
+      <!-- Page strip: Horizontal scrollable thumbnails at top (60px height) -->
+      <div class="page-strip" data-cjx-entrance>
+
+        <!-- Page 1 thumbnail - active -->
+        <div class="page-strip-thumb active">
+          <div class="strip-placeholder">
+            <span>1</span>
+          </div>
+          <span class="page-strip-badge">1</span>
+        </div>
+
+        <!-- Page 2 thumbnail -->
+        <div class="page-strip-thumb">
+          <div class="strip-placeholder">
+            <span>2</span>
+          </div>
+          <span class="page-strip-badge">2</span>
+        </div>
+
+        <!-- Page 3 thumbnail -->
+        <div class="page-strip-thumb">
+          <div class="strip-placeholder">
+            <span>3</span>
+          </div>
+          <span class="page-strip-badge">3</span>
+        </div>
+
+        <!-- Page 4 thumbnail -->
+        <div class="page-strip-thumb">
+          <div class="strip-placeholder">
+            <span>4</span>
+          </div>
+          <span class="page-strip-badge">4</span>
+        </div>
+
+        <!-- Page 5 thumbnail -->
+        <div class="page-strip-thumb">
+          <div class="strip-placeholder">
+            <span>5</span>
+          </div>
+          <span class="page-strip-badge">5</span>
+        </div>
+
+      </div>
+
+      <!-- Main area: Large preview of selected page (tappable to edit) -->
+      <div class="session-preview" data-cjx-entrance>
+        <div class="session-preview-placeholder" title="Tap to edit page">
+          <div class="doc-sim">
+            <div class="doc-sim-line heading"></div>
+            <div class="doc-sim-line long"></div>
+            <div class="doc-sim-line full"></div>
+            <div class="doc-sim-line medium"></div>
+            <div class="doc-sim-line long"></div>
+            <div class="doc-sim-block"></div>
+            <div class="doc-sim-line full"></div>
+            <div class="doc-sim-line short"></div>
+            <div class="doc-sim-line long"></div>
+            <div class="doc-sim-line medium"></div>
+            <div class="doc-sim-line full"></div>
+            <div class="doc-sim-line long"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar: "Add Page" button, "Delete Page" button (shown only if pageCount > 1) -->
+      <div class="session-bottom-bar" data-cjx-entrance>
+        <!-- Add Page: camera icon + text -->
+        <button class="session-action-btn" title="Add Page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          Add Page
+        </button>
+
+        <!-- Delete Page: trash icon (shown because pageCount > 1) -->
+        <button class="session-action-btn danger" title="Delete Page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+          Delete Page
+        </button>
+      </div>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

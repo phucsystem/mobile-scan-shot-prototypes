@@ -1,0 +1,197 @@
+<!--
+  Screen: S-01 Home / Gallery
+  CJX Stage: Retention
+  FR Mapping: FR-06, FR-16, FR-17, FR-18, FR-19
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-01 Home / Gallery</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+</head>
+<body class="cjx-retention">
+  <div class="app-layout">
+    <main class="main-content" data-cjx-entrance>
+
+      <!-- Top Bar: App title "Scan Shot" (left), search icon (right), import icon -->
+      <div class="top-bar">
+        <h1 class="top-bar-title">Scan Shot</h1>
+        <div class="top-bar-actions">
+          <!-- Import button -->
+          <button class="icon-btn" title="Import from gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </button>
+          <!-- Search icon toggle -->
+          <button class="icon-btn" data-search-toggle title="Search documents">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Search bar: Expandable search input (hidden by default, toggled by icon) -->
+      <div class="search-bar">
+        <div class="search-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" placeholder="Search documents...">
+        </div>
+      </div>
+
+      <!-- Document grid: 2-column grid of document cards -->
+      <div class="scroll-content">
+        <div class="doc-grid" data-cjx-entrance>
+
+          <!-- Document card 1 — Receipt -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line short"></div>
+              </div>
+              <span class="page-badge">3 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Receipt.pdf</div>
+              <div class="doc-card-caption">3 pages &middot; Today</div>
+            </div>
+          </div>
+
+          <!-- Document card 2 — Contract -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line short"></div>
+              </div>
+              <span class="page-badge">1 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Contract Draft</div>
+              <div class="doc-card-caption">1 page &middot; Yesterday</div>
+            </div>
+          </div>
+
+          <!-- Document card 3 — Tax -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line full"></div>
+              </div>
+              <span class="page-badge">5 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Tax Return 2025</div>
+              <div class="doc-card-caption">5 pages &middot; Feb 3</div>
+            </div>
+          </div>
+
+          <!-- Document card 4 — Passport -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line short"></div>
+                <div class="thumb-doc-line full"></div>
+              </div>
+              <span class="page-badge">2 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Passport Scan</div>
+              <div class="doc-card-caption">2 pages &middot; Jan 28</div>
+            </div>
+          </div>
+
+          <!-- Document card 5 — Business Card -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line short"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line long"></div>
+              </div>
+              <span class="page-badge">1 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Business Card</div>
+              <div class="doc-card-caption">1 page &middot; Jan 20</div>
+            </div>
+          </div>
+
+          <!-- Document card 6 — Meeting Notes -->
+          <div class="doc-card">
+            <div class="doc-card-thumb">
+              <div class="thumb-doc-lines">
+                <div class="thumb-doc-line heading"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line long"></div>
+                <div class="thumb-doc-line full"></div>
+                <div class="thumb-doc-line medium"></div>
+                <div class="thumb-doc-line short"></div>
+                <div class="thumb-doc-line long"></div>
+              </div>
+              <span class="page-badge">4 pg</span>
+            </div>
+            <div class="doc-card-info">
+              <div class="doc-card-title">Meeting Notes</div>
+              <div class="doc-card-caption">4 pages &middot; Jan 15</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FAB: Bottom-right, primary blue, camera icon -->
+      <button class="fab" title="New Scan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+      </button>
+
+      <!-- Context menu (long-press on card): rename, delete -->
+      <div class="context-menu">
+        <div class="context-menu-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Rename
+        </div>
+        <div class="context-menu-item danger">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Delete
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>

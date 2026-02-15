@@ -1,0 +1,61 @@
+<!--
+  Screen: S-01 Home / Gallery (Empty State)
+  CJX Stage: Retention
+  FR Mapping: FR-06, FR-16
+  Note: First launch flow - empty gallery with CTA
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-01 Home / Gallery (Empty)</title>
+  <link rel="icon" type="image/png" href="assets/icon-header.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
+</head>
+<body class="cjx-retention">
+  <div class="app-layout">
+    <main class="main-content" data-cjx-entrance>
+
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <h1 class="top-bar-title">Scan Shot</h1>
+        <div class="top-bar-actions">
+          <button class="icon-btn" title="Import from gallery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty state: Illustration + "Tap + to scan your first document" text -->
+      <div class="empty-state" data-cjx-entrance>
+        <svg class="empty-state-icon" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5">
+          <!-- Scanner illustration -->
+          <rect x="20" y="15" width="80" height="90" rx="8" stroke-dasharray="6 3" opacity="0.3"/>
+          <rect x="30" y="25" width="60" height="70" rx="4" fill="none" stroke-width="2" opacity="0.5"/>
+          <path d="M50 55 L55 65 L70 45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          <circle cx="60" cy="100" r="12" stroke-width="2" opacity="0.3"/>
+          <line x1="54" y1="100" x2="66" y2="100" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+          <line x1="60" y1="94" x2="60" y2="106" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+        </svg>
+        <p class="empty-state-text">Tap <strong>+</strong> to scan your first document</p>
+      </div>
+
+      <!-- FAB -->
+      <button class="fab" title="New Scan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+      </button>
+
+    </main>
+  </div>
+  <script src="interactions.js"></script>
+</body>
+</html>
